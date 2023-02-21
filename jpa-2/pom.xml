@@ -11,6 +11,7 @@
 	<name>jpa-2</name>
 
 	<properties>
+		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -20,7 +21,7 @@
 			<dependency>
 				<groupId>org.jboss.arquillian</groupId>
 				<artifactId>arquillian-bom</artifactId>
-				<version>1.7.0.Alpha10</version>
+				<version>1.6.0.Final</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
@@ -33,11 +34,6 @@
 			<artifactId>javaee-web-api</artifactId>
 			<version>8.0.1</version>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.ejb</groupId>
-			<artifactId>javax.ejb-api</artifactId>
-			<version>3.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
@@ -62,21 +58,26 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.jboss.arquillian.container</groupId>
+			<artifactId>arquillian-glassfish-embedded-3.1</artifactId>
+			<version>1.0.0.Final</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.main.extras</groupId>
+			<artifactId>glassfish-embedded-all</artifactId>
+			<version>4.1.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>fish.payara.arquillian</groupId>
-			<artifactId>arquillian-payara-server-embedded</artifactId>
-			<version>2.4.6</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>fish.payara.extras</groupId>
-			<artifactId>payara-embedded-all</artifactId>
-			<version>5.2022.1</version>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
@@ -89,19 +90,19 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.1</version>
 					<configuration>
-						<!-- Arquillian no funciona con la JDK 11 :_( -->
 						<source>1.8</source>
 						<target>1.8</target>
 						<compilerArguments>
-							<encoding>${project.build.sourceEncoding}</encoding>
+							<endorseddirs>${endorsed.dir}</endorseddirs>
 						</compilerArguments>
 					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-war-plugin</artifactId>
-					<version>2.6</version>
+					<version>3.3.1</version>
 					<configuration>
+						<encoding>UTF-8</encoding>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
