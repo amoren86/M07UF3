@@ -1,4 +1,4 @@
-package cat.marianao.daw2.m07.uf3.domain;
+package cat.institutmarianao.domain;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

@@ -1,9 +1,9 @@
-package cat.marianao.daw2.m07.uf3.user.mock;
+package cat.institutmarianao.user.mock;
 
 import java.sql.Timestamp;
 import java.util.Date;
 
-import cat.marianao.daw2.m07.uf3.domain.User;
+import cat.institutmarianao.domain.User;
 
 public class Mock {
 	public static User getUser0() {

@@ -1,10 +1,10 @@
-package cat.marianao.daw2.m07.uf3.service;
+package cat.institutmarianao.service;
 
 import java.util.List;
 
 import javax.ejb.Local;
 
-import cat.marianao.daw2.m07.uf3.domain.User;
+import cat.institutmarianao.domain.User;
 
 @Local
 public interface UserService {

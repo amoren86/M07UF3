@@ -1,4 +1,4 @@
-package cat.marianao.daw2.m07.uf3.service.impl;
+package cat.institutmarianao.service.impl;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import cat.marianao.daw2.m07.uf3.domain.User;
-import cat.marianao.daw2.m07.uf3.service.UserService;
+import cat.institutmarianao.domain.User;
+import cat.institutmarianao.service.UserService;
 
 @Stateless
 public class UserServiceImpl implements UserService {

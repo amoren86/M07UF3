@@ -1,4 +1,4 @@
-package cat.marianao.daw2.m07.uf3.user.impl;
+package cat.institutmarianao.user.impl;
 
 import java.util.List;
 
@@ -14,10 +14,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import cat.marianao.daw2.m07.uf3.domain.User;
-import cat.marianao.daw2.m07.uf3.service.UserService;
-import cat.marianao.daw2.m07.uf3.service.impl.UserServiceImpl;
-import cat.marianao.daw2.m07.uf3.user.mock.Mock;
+import cat.institutmarianao.domain.User;
+import cat.institutmarianao.service.UserService;
+import cat.institutmarianao.service.impl.UserServiceImpl;
+import cat.institutmarianao.user.mock.Mock;
 
 @RunWith(Arquillian.class)
 public class UserServiceTest {

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cat.marianao.daw2.m07.uf3.servlet;
+package cat.institutmarianao.servlet;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cat.marianao.daw2.m07.uf3.domain.User;
-import cat.marianao.daw2.m07.uf3.service.UserService;
+import cat.institutmarianao.domain.User;
+import cat.institutmarianao.service.UserService;
 
 /**
  *
