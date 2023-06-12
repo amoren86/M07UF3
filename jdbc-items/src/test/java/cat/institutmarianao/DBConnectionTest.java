@@ -1,4 +1,4 @@
-package cat.marianao;
+package cat.institutmarianao;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -17,13 +17,13 @@ public class DBConnectionTest {
 
 	@Before
 	public void setUp() {
-		System.out.println("Before");
+		// System.out.println("Before");
 		dBConnection = new DBConnection("db.properties");
 	}
 
 	@After
 	public void cleanUp() throws SQLException {
-		System.out.println("After");
+		// System.out.println("After");
 		if (connection != null) {
 			connection.close();
 		}
@@ -31,7 +31,7 @@ public class DBConnectionTest {
 
 	@Test
 	public void getConnectionOk() throws IOException, SQLException, ClassNotFoundException {
-		System.out.println("getConnectionOk");
+		// System.out.println("getConnectionOk");
 		// Test this method
 		connection = dBConnection.getConnection();
 

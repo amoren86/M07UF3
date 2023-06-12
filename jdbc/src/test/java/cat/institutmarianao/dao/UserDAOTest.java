@@ -1,4 +1,4 @@
-package cat.marianao.dao;
+package cat.institutmarianao.dao;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -10,8 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import cat.institutmarianao.DBConnection;
-import cat.institutmarianao.dao.User;
-import cat.institutmarianao.dao.UserDAO;
 
 public class UserDAOTest {
 	private DBConnection dBConnection;
@@ -68,14 +66,14 @@ public class UserDAOTest {
 		Assert.assertNotEquals(0, createdUser.getId());
 	}
 
-	@Test(expected = Exception.class)
-	public void createUserWithError() throws Exception {
-		String username = "sl','sls";
-		String name = "Pete Test";
-		String email = "pete@email.com";
-		User createdUser = userDAO.createUser(username, name, email);
-		Assert.assertNull(createdUser);
-	}
+//	@Test(expected = Exception.class) //SQL injection exception if we use without PreparedStatement
+//	public void createUserWithError() throws Exception {
+//		String username = "sl','sls";
+//		String name = "Pete Test";
+//		String email = "pete@email.com";
+//		User createdUser = userDAO.createUser(username, name, email);
+//		Assert.assertNull(createdUser);
+//	}
 
 	@Test
 	public void updateUserEmail() throws Exception {
