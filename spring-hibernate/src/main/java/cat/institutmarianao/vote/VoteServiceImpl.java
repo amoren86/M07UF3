@@ -1,25 +1,24 @@
 package cat.institutmarianao.vote;
 
-import javax.transaction.Transactional;
-
 import cat.institutmarianao.answer.Answer;
-import cat.institutmarianao.answer.AnswerDAO;
+import cat.institutmarianao.answer.AnswerDao;
 import cat.institutmarianao.user.User;
-import cat.institutmarianao.user.UserDAO;
+import cat.institutmarianao.user.UserDao;
+import jakarta.transaction.Transactional;
 
 /*
  * A vote is made by an user over an answer of another user
  */
 @Transactional
 public class VoteServiceImpl implements VoteService {
-	private VoteDAO voteDAO;
-	private AnswerDAO answerDAO;
-	private UserDAO userDAO;
+	private VoteDao voteDao;
+	private AnswerDao answerDao;
+	private UserDao userDao;
 
-	public VoteServiceImpl(VoteDAO voteDAO, AnswerDAO answerDAO, UserDAO userDAO) {
-		this.voteDAO = voteDAO;
-		this.answerDAO = answerDAO;
-		this.userDAO = userDAO;
+	public VoteServiceImpl(VoteDao voteDao, AnswerDao answerDao, UserDao userDao) {
+		this.voteDao = voteDao;
+		this.answerDao = answerDao;
+		this.userDao = userDao;
 	}
 
 	@Override
@@ -33,16 +32,16 @@ public class VoteServiceImpl implements VoteService {
 	}
 
 	private Vote vote(Integer userId, Integer answerId, Boolean value) {
-		User user = userDAO.getById(userId);
+		User user = userDao.getById(userId);
 
-		Answer answer = answerDAO.getById(answerId);
+		Answer answer = answerDao.getById(answerId);
 
 		Vote vote = new Vote();
 		vote.setAnswer(answer);
 		vote.setUser(user);
 		vote.setVote(value);
 
-		voteDAO.save(vote);
+		voteDao.save(vote);
 
 		return vote;
 	}

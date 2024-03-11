@@ -1,14 +1,15 @@
 package cat.institutmarianao.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
+import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.PersistenceContext;
 
 @Stateless
-public class UserJPADAO implements UserDAO {
+public class UserJPADAO implements UserDao {
 	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -49,12 +50,13 @@ public class UserJPADAO implements UserDAO {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findActiveUsers() {
 		try {
 			return entityManager.createQuery("select object(o) from User o " + "where o.active= true").getResultList();
 		} catch (NoResultException e) {
-			return null;
+			return new ArrayList<>();
 		}
 	}
 

@@ -1,14 +1,14 @@
 package cat.institutmarianao.user;
 
 public class UserServiceImpl implements UserService {
-	private UserDAO userDAO;
+	private UserDao userDao;
 
-	public UserServiceImpl(UserDAO userDAO) {
-		this.userDAO = userDAO;
+	public UserServiceImpl(UserDao userDao) {
+		this.userDao = userDao;
 	}
 
 	@Override
 	public User findUserByUsername(String username) {
-		return userDAO.findUserByUsername(username);
+		return userDao.findUserByUsername(username);
 	}
 }

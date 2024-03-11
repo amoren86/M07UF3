@@ -1,7 +1,7 @@
 package cat.institutmarianao.question;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.timeout;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -10,22 +10,22 @@ import static org.mockito.Mockito.when;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import cat.institutmarianao.config.ServicesTestConfig;
+import cat.institutmarianao.ServicesTestConfig;
 import cat.institutmarianao.user.User;
-import cat.institutmarianao.user.UserDAO;
+import cat.institutmarianao.user.UserDao;
 import cat.institutmarianao.utils.Mock;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { ServicesTestConfig.class })
 public class QuestionServiceTest {
 	@Autowired
-	private UserDAO userDAOMock;
+	private UserDao userDAOMock;
 
 	@Autowired
 	private QuestionService questionService;

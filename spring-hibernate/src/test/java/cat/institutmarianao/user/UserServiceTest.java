@@ -1,26 +1,23 @@
 package cat.institutmarianao.user;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import cat.institutmarianao.config.ServicesTestConfig;
-import cat.institutmarianao.user.User;
-import cat.institutmarianao.user.UserDAO;
-import cat.institutmarianao.user.UserServiceImpl;
+import cat.institutmarianao.ServicesTestConfig;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { ServicesTestConfig.class })
 public class UserServiceTest {
 	@Autowired
-	private UserDAO userDAO;
+	private UserDao userDao;
 
 	@Autowired
 	private UserServiceImpl userService;
@@ -33,14 +30,14 @@ public class UserServiceTest {
 		user.setUsername(username);
 		user.setUserId(1);
 
-		when(userDAO.findUserByUsername(username)).thenReturn(user);
+		when(userDao.findUserByUsername(username)).thenReturn(user);
 
 		/* Test */
 		User userFromDb = userService.findUserByUsername(username);
 
 		/* Verification */
 		assertEquals(username, userFromDb.getUsername());
-		assertEquals(new Integer(1), userFromDb.getUserId());
-		verify(userDAO, times(1)).findUserByUsername(username);
+		assertEquals(1, userFromDb.getUserId());
+		verify(userDao, times(1)).findUserByUsername(username);
 	}
 }
