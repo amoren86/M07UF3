@@ -1,0 +1,66 @@
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>cat.institutmarianao</groupId>
+	<artifactId>jdbc6</artifactId>
+	<version>2025.01</version>
+	<packaging>war</packaging>
+
+	<properties>
+		<!-- General properties -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.release>17</maven.compiler.release>
+
+		<!-- Dependency versions -->
+		<mysql.connector.version>8.0.33</mysql.connector.version>
+		<com.h2database.varsion>2.3.232</com.h2database.varsion>
+		<junit.jupiter.api.version>5.11.4</junit.jupiter.api.version>
+		<!-- Plugin versions -->
+		<compiler.plugin.version>3.11.0</compiler.plugin.version>
+		<war.plugin.version>3.3.2</war.plugin.version>
+	</properties>
+
+	<dependencies>
+		<!-- MySQL Driver -->
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>${mysql.connector.version}</version>
+		</dependency>
+		<!-- H2 Database -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${com.h2database.varsion}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- JUnit -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.jupiter.api.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- Maven WAR Plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${war.plugin.version}</version>
+				</plugin>
+				<!-- Maven Compiler Plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${compiler.plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
