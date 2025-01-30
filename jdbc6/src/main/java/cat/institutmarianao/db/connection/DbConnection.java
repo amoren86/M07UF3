@@ -8,10 +8,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class DBConnection {
+public class DbConnection {
 	private String dbProperties;
 
-	public DBConnection(String dbProperties) {
+	public DbConnection(String dbProperties) {
 		this.dbProperties = dbProperties;
 	}
 
@@ -24,7 +24,6 @@ public class DBConnection {
 		if (urlResource != null) {
 			resourceAsStream = urlResource.openStream();
 			props.load(resourceAsStream);
-			Class.forName(props.getProperty("DB_DRIVER_CLASS"));
 			con = DriverManager.getConnection(props.getProperty("DB_URL"), props.getProperty("DB_USERNAME"),
 					props.getProperty("DB_PASSWORD"));
 		}

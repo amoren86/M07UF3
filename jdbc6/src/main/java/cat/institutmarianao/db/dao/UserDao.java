@@ -9,14 +9,14 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import cat.institutmarianao.db.connection.DBConnection;
+import cat.institutmarianao.db.connection.DbConnection;
 import cat.institutmarianao.model.User;
 
-public class UserDAO {
-	private DBConnection dBConnection;
+public class UserDao {
+	private DbConnection dBConnection;
 	private Connection connection;
 
-	public UserDAO(DBConnection dBConnection) {
+	public UserDao(DbConnection dBConnection) {
 		this.dBConnection = dBConnection;
 	}
 

@@ -11,16 +11,16 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import cat.institutmarianao.db.connection.DBConnection;
+import cat.institutmarianao.db.connection.DbConnection;
 
-public class DBConnectionTest {
-	private DBConnection dBConnection;
+public class DbConnectionTest {
+	private DbConnection dBConnection;
 	private Connection connection;
 
 	@BeforeEach
 	public void setUp() {
 		System.out.println("BeforeEach");
-		dBConnection = new DBConnection("db.properties");
+		dBConnection = new DbConnection("db.properties");
 	}
 
 	@AfterEach
@@ -47,7 +47,7 @@ public class DBConnectionTest {
 	public void getConnectionWrongDriverGetsNull() {
 		System.out.println("getConnectionWrongDriverGetsNull");
 		assertThrows(ClassNotFoundException.class, () -> {
-			DBConnection dBWrongConnection = new DBConnection("db_wrong_driver.properties");
+			DbConnection dBWrongConnection = new DbConnection("db_wrong_driver.properties");
 			connection = dBWrongConnection.getConnection();
 		}, "S'esperava una excepció ClassNotFoundException");
 	}

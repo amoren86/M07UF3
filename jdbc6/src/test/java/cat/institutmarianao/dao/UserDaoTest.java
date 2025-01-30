@@ -14,19 +14,19 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import cat.institutmarianao.db.connection.DBConnection;
-import cat.institutmarianao.db.dao.UserDAO;
+import cat.institutmarianao.db.connection.DbConnection;
+import cat.institutmarianao.db.dao.UserDao;
 import cat.institutmarianao.model.User;
 
-public class UserDAOTest {
-	private DBConnection dBConnection;
+public class UserDaoTest {
+	private DbConnection dBConnection;
 	private String connectionProperties = "db_test.properties";
-	private UserDAO userDAO;
+	private UserDao userDAO;
 
 	@BeforeEach
 	public void setUp() {
-		dBConnection = new DBConnection(connectionProperties);
-		userDAO = new UserDAO(dBConnection);
+		dBConnection = new DbConnection(connectionProperties);
+		userDAO = new UserDao(dBConnection);
 	}
 
 	@AfterEach
