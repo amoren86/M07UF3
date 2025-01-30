@@ -1,4 +1,4 @@
-package cat.institutmarianao;
+package cat.institutmarianao.db.connection;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -35,7 +35,7 @@ class DbConnectionTest {
 		try {
 			connection = dbConnection.getConnection();
 			assertNotNull(connection);
-			assertEquals("H2", connection.getMetaData().getDatabaseProductName());
+			assertEquals("h2", connection.getMetaData().getDatabaseProductName().toLowerCase());
 			assertEquals("socioc_db", connection.getCatalog().toLowerCase());
 		} catch (Exception e) {
 			fail(e.getMessage());

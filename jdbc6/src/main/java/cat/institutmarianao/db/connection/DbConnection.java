@@ -15,21 +15,20 @@ public class DbConnection {
 		this.dbProperties = dbProperties;
 	}
 
-	public Connection getConnection() throws IOException, ClassNotFoundException, SQLException {
+	public Connection getConnection() throws IOException, SQLException {
 		Properties props = new Properties();
-		InputStream resourceAsStream = null;
-		Connection con = null;
 		ClassLoader classLoader = getClass().getClassLoader();
 		URL urlResource = classLoader.getResource(dbProperties);
+
 		if (urlResource != null) {
-			resourceAsStream = urlResource.openStream();
-			props.load(resourceAsStream);
-			con = DriverManager.getConnection(props.getProperty("DB_URL"), props.getProperty("DB_USERNAME"),
-					props.getProperty("DB_PASSWORD"));
+			try (InputStream resourceAsStream = urlResource.openStream()) {
+				props.load(resourceAsStream);
+				return DriverManager.getConnection(props.getProperty("db_url"), props.getProperty("db_username"),
+						props.getProperty("db_password"));
+			}
 		}
-		if (resourceAsStream != null) {
-			resourceAsStream.close();
-		}
-		return con;
+
+		return null;
 	}
 }
+
