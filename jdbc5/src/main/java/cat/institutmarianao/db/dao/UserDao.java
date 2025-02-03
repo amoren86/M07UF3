@@ -52,13 +52,18 @@ public class UserDao {
 		return updateUser(user.getUsername(), qry);
 	}
 
+	public void deleteUser(User user) throws IOException, SQLException {
+		String qry = String.format("DELETE FROM users WHERE id = '%s'", user.getId());
+		updateUser(user.getUsername(), qry);
+	}
+
 	private List<User> executeQuery(String query) throws IOException, SQLException {
 		if (connection == null) {
 			connection = dBConnection.getConnection();
 		}
 		List<User> users = new ArrayList<>();
 
-		try (Statement stmt = getConnection().createStatement(); ResultSet rs = stmt.executeQuery(query)) {
+		try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
 			while (rs.next()) {
 				User user = buildUserFromResultSet(rs);
 				users.add(user);
@@ -82,7 +87,7 @@ public class UserDao {
 		if (connection == null) {
 			connection = dBConnection.getConnection();
 		}
-		try (Statement stmt = getConnection().createStatement()) {
+		try (Statement stmt = connection.createStatement()) {
 			return stmt.executeUpdate(query);
 		}
 	}

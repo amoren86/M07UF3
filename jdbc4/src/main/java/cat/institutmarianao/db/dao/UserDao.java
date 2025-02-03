@@ -43,8 +43,8 @@ public class UserDao {
 
 				users.add(user);
 			}
+			return users;
 		}
-		return users;
 	}
 
 	public User findUserByUsername(String username) throws IOException, SQLException {
@@ -66,8 +66,8 @@ public class UserDao {
 				user.setActive(rs.getBoolean("active"));
 				user.setCreatedOn(rs.getTimestamp("created_on"));
 			}
+			return user;
 		}
-		return user;
 	}
 
 	public User findUserByEmail(String email) throws IOException, SQLException {
@@ -88,8 +88,8 @@ public class UserDao {
 				user.setActive(rs.getBoolean("active"));
 				user.setCreatedOn(rs.getTimestamp("created_on"));
 			}
+			return user;
 		}
-		return user;
 	}
 
 }

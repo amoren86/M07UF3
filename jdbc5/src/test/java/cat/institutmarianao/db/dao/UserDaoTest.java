@@ -85,6 +85,24 @@ class UserDaoTest {
 		User createdUser = userDao.createUser(username, name, email);
 
 		assertNotNull(createdUser);
+		assertNotEquals(0, createdUser.getId());
+		assertEquals(username, createdUser.getUsername());
+		assertEquals(name, createdUser.getName());
+		assertEquals(email, createdUser.getEmail());
+	}
+
+	@Test
+	void createUserWithInjectionError() throws IOException, SQLException {
+		// The following line produces that won't pass the test due it counts as two
+		// fields
+		String username = "a','b";
+		String name = "Exception";
+		String email = "exception@exception.was";
+
+		User createdUser = userDao.createUser(username, name, email);
+
+		assertNotNull(createdUser);
+		assertNotEquals(0, createdUser.getId());
 		assertEquals(username, createdUser.getUsername());
 		assertEquals(name, createdUser.getName());
 		assertEquals(email, createdUser.getEmail());
@@ -106,4 +124,17 @@ class UserDaoTest {
 		assertEquals(username, updatedUser.getUsername());
 		assertEquals(newEmail, updatedUser.getEmail());
 	}
+
+	@Test
+	void deleteUserOk() throws IOException, SQLException {
+		String username = "lovelace";
+		User user = userDao.findUserByUsername(username);
+		assertNotNull(user);
+
+		userDao.deleteUser(user);
+
+		User deletedUser = userDao.findUserByUsername(username);
+		assertNull(deletedUser);
+	}
+
 }
