@@ -4,16 +4,20 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cat.institutmarianao</groupId>
-	<artifactId>jdbc6</artifactId>
-	<version>2025.01</version>
+	<artifactId>jpa1</artifactId>
+	<version>1.0</version>
 	<packaging>war</packaging>
 
 	<properties>
 		<!-- General properties -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.release>17</maven.compiler.release>
-
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		
 		<!-- Dependency versions -->
+		<jakartaee-api.version>10.0.0</jakartaee-api.version>
+		<jakarta.servlet.jsp.jstl>3.0.0</jakarta.servlet.jsp.jstl>
+		<eclipselink>4.0.2</eclipselink>
 		<mysql.connector.version>8.0.33</mysql.connector.version>
 		<com.h2database.varsion>2.3.232</com.h2database.varsion>
 		<junit.jupiter.api.version>5.11.4</junit.jupiter.api.version>
@@ -24,6 +28,25 @@
 	</properties>
 
 	<dependencies>
+		<!-- Jakarta EE -->
+		<dependency>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-web-api</artifactId>
+			<version>${jakartaee-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- Jakarta JSTL -->
+		<dependency>
+			<groupId>jakarta.servlet.jsp.jstl</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+			<version>${jakarta.servlet.jsp.jstl}</version>
+		</dependency>
+		<!-- JPA Implementation -->
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>${eclipselink}</version>
+		</dependency>
 		<!-- MySQL Driver -->
 		<dependency>
 			<groupId>com.mysql</groupId>
@@ -64,4 +87,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
 </project>
