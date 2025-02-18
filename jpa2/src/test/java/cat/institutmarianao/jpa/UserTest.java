@@ -1,14 +1,14 @@
 package cat.institutmarianao.jpa;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import cat.institutmarianao.jpa.model.User;
 import jakarta.persistence.EntityManager;
@@ -20,13 +20,13 @@ class UserTest {
 	private EntityManager entityManager;
 	private EntityTransaction entityTransaction;
 
-	@BeforeEach
+	@Before
 	void setUp() {
 		entityManager = Persistence.createEntityManagerFactory("InMemoryH2PersistenceUnit").createEntityManager();
 		entityTransaction = entityManager.getTransaction();
 	}
 
-	@AfterEach
+	@After
 	void cleanUp() {
 		if (entityManager != null && entityManager.isOpen()) {
 			entityManager.close();

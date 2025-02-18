@@ -1,0 +1,13 @@
+-------------------------------------------------------------------------------
+Test set: cat.institutmarianao.jpa.service.impl.UserServiceTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 9.484 s <<< FAILURE! - in cat.institutmarianao.jpa.service.impl.UserServiceTest
+cat.institutmarianao.jpa.service.impl.UserServiceTest.testEditUser  Time elapsed: 0.008 s  <<< ERROR!
+java.lang.IllegalArgumentException: ArquillianServletRunnerEE9 not found. Could not determine ContextRoot from ProtocolMetadata, please contact DeployableContainer developer.
+
+cat.institutmarianao.jpa.service.impl.UserServiceTest.testRemoveUser  Time elapsed: 0 s  <<< ERROR!
+java.lang.IllegalArgumentException: ArquillianServletRunnerEE9 not found. Could not determine ContextRoot from ProtocolMetadata, please contact DeployableContainer developer.
+
+cat.institutmarianao.jpa.service.impl.UserServiceTest.testCreateUser  Time elapsed: 0.008 s  <<< ERROR!
+java.lang.IllegalArgumentException: ArquillianServletRunnerEE9 not found. Could not determine ContextRoot from ProtocolMetadata, please contact DeployableContainer developer.
+

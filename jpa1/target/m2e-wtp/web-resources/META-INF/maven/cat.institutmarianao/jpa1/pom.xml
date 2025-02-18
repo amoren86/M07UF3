@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cat.institutmarianao</groupId>
 	<artifactId>jpa1</artifactId>
-	<version>1.0</version>
+	<version>2025.26</version>
 	<packaging>war</packaging>
 
 	<properties>
@@ -13,15 +13,14 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.release>17</maven.compiler.release>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
-		
+
 		<!-- Dependency versions -->
 		<jakartaee-api.version>10.0.0</jakartaee-api.version>
-		<jakarta.servlet.jsp.jstl>3.0.0</jakarta.servlet.jsp.jstl>
-		<eclipselink>4.0.2</eclipselink>
-		<mysql.connector.version>8.0.33</mysql.connector.version>
-		<com.h2database.varsion>2.3.232</com.h2database.varsion>
-		<junit.jupiter.api.version>5.11.4</junit.jupiter.api.version>
-		
+		<hibernate.version>6.3.1.Final</hibernate.version>
+		<mysql.connector.version>8.3.0</mysql.connector.version>
+		<h2-database>2.3.232</h2-database>
+		<junit.version>4.13.2</junit.version>
+
 		<!-- Plugin versions -->
 		<compiler.plugin.version>3.11.0</compiler.plugin.version>
 		<war.plugin.version>3.3.2</war.plugin.version>
@@ -35,17 +34,17 @@
 			<version>${jakartaee-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- Jakarta JSTL -->
-		<dependency>
-			<groupId>jakarta.servlet.jsp.jstl</groupId>
-			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-			<version>${jakarta.servlet.jsp.jstl}</version>
-		</dependency>
 		<!-- JPA Implementation -->
 		<dependency>
-			<groupId>org.eclipse.persistence</groupId>
-			<artifactId>eclipselink</artifactId>
-			<version>${eclipselink}</version>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>yasson</artifactId>
+			<version>3.0.3</version>
+			<scope>test</scope>
 		</dependency>
 		<!-- MySQL Driver -->
 		<dependency>
@@ -57,14 +56,14 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>${com.h2database.varsion}</version>
+			<version>${h2-database}</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- JUnit -->
 		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>${junit.jupiter.api.version}</version>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

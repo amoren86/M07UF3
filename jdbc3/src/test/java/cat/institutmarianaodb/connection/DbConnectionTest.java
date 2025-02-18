@@ -32,7 +32,7 @@ class DbConnectionTest {
 			connection = dbConnection.getConnection();
 			assertNotNull(connection);
 			assertEquals("h2", connection.getMetaData().getDatabaseProductName().toLowerCase());
-			assertEquals("socioc_db", connection.getCatalog().toLowerCase());
+			assertEquals("social", connection.getCatalog().toLowerCase());
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
