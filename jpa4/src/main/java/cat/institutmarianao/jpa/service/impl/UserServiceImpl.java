@@ -17,13 +17,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void edit(User user) {
-		entityManager.merge(user);
+	public User edit(User user) {
+		return entityManager.merge(user);
 	}
 
 	@Override
 	public void remove(User user) {
-		entityManager.remove(user);
+		entityManager.remove(entityManager.contains(user) ? user : entityManager.merge(user));
 	}
 
 	@Override

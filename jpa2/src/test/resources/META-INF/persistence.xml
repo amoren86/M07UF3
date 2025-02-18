@@ -5,21 +5,17 @@
              version="3.0">
 	<persistence-unit name="InMemoryH2PersistenceUnit"
 		transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>cat.institutmarianao.jpa.model.User</class>
 		<properties>
-			<property name="jakarta.persistence.jdbc.driver"
-				value="org.h2.Driver" />
-			<property name="jakarta.persistence.jdbc.url"
-				value="jdbc:h2:mem:social" />
-			<property name="jakarta.persistence.jdbc.user" value="user" />
-			<property name="jakarta.persistence.jdbc.password"
-				value="password" />
-
-			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			
+            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:social" />
+            <property name="jakarta.persistence.jdbc.user" value="user" />
+            <property name="jakarta.persistence.jdbc.password" value="password" />
+           
+           <property
+				name="jakarta.persistence.schema-generation.database.action"
+				value="drop-and-create" />
 		</properties>
 	</persistence-unit>
 </persistence>
