@@ -22,7 +22,7 @@
 		<junit.version>4.13.2</junit.version>
 
 		<arquillian-junit-container>1.7.2.Final</arquillian-junit-container>
-		<payara-embedded-all>6.2025.1</payara-embedded-all>
+		<payara-embedded-all>6.2024.8</payara-embedded-all>
 		<arquillian-payara-server-embedded>3.1</arquillian-payara-server-embedded>
 		
 		<!-- Plugin versions -->
@@ -72,7 +72,7 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- Dependencia de Arquillian Core -->
+		<!-- Arquillian Core -->
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
@@ -91,6 +91,7 @@
 			<groupId>fish.payara.arquillian</groupId>
 			<artifactId>arquillian-payara-server-embedded</artifactId>
 			<version>${arquillian-payara-server-embedded}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

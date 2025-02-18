@@ -1,10 +1,14 @@
 <persistence xmlns="https://jakarta.ee/xml/ns/persistence"
-	version="3.0">
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence
+                                 https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
     <persistence-unit name="SocialPersistenceUnit" transaction-type="JTA">
         <jta-data-source>jdbc/social</jta-data-source>
         <class>cat.institutmarianao.jpa.model.User</class>
-        <properties>
-            <property name="eclipselink.logging.level" value="FINEST"/>
-        </properties>
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+		</properties>
     </persistence-unit>
 </persistence>

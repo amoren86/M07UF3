@@ -28,8 +28,10 @@ public class UserServiceTest {
 
 	@Deployment(testable = true)
 	public static JavaArchive createTestableDeployment() {
-		return ShrinkWrap.create(JavaArchive.class, "example.jar").addClasses(UserService.class, UserServiceImpl.class)
+		return ShrinkWrap.create(JavaArchive.class, "jpa4.jar").addPackages(true, "cat.institutmarianao.jpa")
 				.addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+				.addAsManifestResource("META-INF/MANIFEST.MF", "MANIFEST.MF")
+				.addAsManifestResource("META-INF/glassfish-resources.xml", "glassfish-resources.xml")
 				.addAsManifestResource(EmptyAsset.INSTANCE, ArchivePaths.create("beans.xml"));
 	}
 
