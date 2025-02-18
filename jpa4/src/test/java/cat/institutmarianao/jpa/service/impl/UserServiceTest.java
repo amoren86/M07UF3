@@ -1,7 +1,9 @@
 package cat.institutmarianao.jpa.service.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThrows;
 
 import java.sql.Timestamp;
@@ -18,20 +20,19 @@ import org.junit.runner.RunWith;
 
 import cat.institutmarianao.jpa.model.User;
 import cat.institutmarianao.jpa.service.UserService;
-import jakarta.inject.Inject;
-import jakarta.persistence.NoResultException;
+import jakarta.ejb.EJB;
+import jakarta.ejb.EJBException;
 
 @RunWith(Arquillian.class)
 public class UserServiceTest {
-	@Inject
+	@EJB
 	private UserService userService;
 
-	@Deployment(testable = true)
+	@Deployment
 	public static JavaArchive createTestableDeployment() {
 		return ShrinkWrap.create(JavaArchive.class, "jpa4.jar").addPackages(true, "cat.institutmarianao.jpa")
+				.addClass(org.h2.Driver.class).addAsManifestResource("META-INF/MANIFEST.MF", "MANIFEST.MF")
 				.addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
-				.addAsManifestResource("META-INF/MANIFEST.MF", "MANIFEST.MF")
-				.addAsManifestResource("META-INF/glassfish-resources.xml", "glassfish-resources.xml")
 				.addAsManifestResource(EmptyAsset.INSTANCE, ArchivePaths.create("beans.xml"));
 	}
 
@@ -50,18 +51,24 @@ public class UserServiceTest {
 	@Test
 	public void testCreateUser() {
 		User user = createTestUser("lovelace", "Ada Lovelace", "ada@lovelace.was");
+		assertNull(user.getId());
+
 		userService.create(user);
+		assertNotNull(user.getId());
 
 		User foundUser = userService.findUserByUsername("lovelace");
 		assertNotNull(foundUser);
-		assertEquals("lovelace", foundUser.getUsername());
-		assertEquals("ada@lovelace.was", foundUser.getEmail());
+		assertEquals(user, foundUser);
 	}
 
 	@Test
 	public void testEditUser() {
 		User user = createTestUser("babbage", "Charles Babbage", "charles@babbage.was");
+		assertNull(user.getId());
+
 		userService.create(user);
+		assertNotNull(user.getId());
+		assertNotEquals("new.charles@babbage.was", user.getEmail());
 
 		user.setEmail("new.charles@babbage.was");
 		userService.edit(user);
@@ -77,6 +84,6 @@ public class UserServiceTest {
 
 		userService.remove(user);
 
-		assertThrows(NoResultException.class, () -> userService.findUserByUsername("byron"));
+		assertThrows(EJBException.class, () -> userService.findUserByUsername("byron"));
 	}
 }

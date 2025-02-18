@@ -5,7 +5,7 @@ import cat.institutmarianao.jpa.model.User;
 public interface UserService {
 	void create(User user);
 
-	void edit(User user);
+	User edit(User user);
 
 	void remove(User user);
 

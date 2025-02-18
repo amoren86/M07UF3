@@ -1,7 +1,6 @@
 eclipse.preferences.version=1
-org.eclipse.jpt.core.platform=generic3_1
-org.eclipse.jpt.jpa.core.discoverAnnotatedClasses=false
-<<<<<<< HEAD
+org.eclipse.jpt.core.platform=generic3_0
+org.eclipse.jpt.jpa.core.discoverAnnotatedClasses=true
 problem.ASSOCIATION_OVERRIDE_INVALID_NAME=error
 problem.ATTRIBUTE_OVERRIDE_DERIVED_AND_SPECIFIED=error
 problem.ATTRIBUTE_OVERRIDE_INVALID_NAME=error
@@ -82,7 +81,7 @@ problem.PERSISTENCE_NO_PERSISTENCE_UNIT=error
 problem.PERSISTENCE_UNIT_DUPLICATE_CLASS=error
 problem.PERSISTENCE_UNIT_DUPLICATE_JAR_FILE=error
 problem.PERSISTENCE_UNIT_DUPLICATE_MAPPING_FILE=error
-problem.PERSISTENCE_UNIT_INVALID_CLASS=error
+problem.PERSISTENCE_UNIT_INVALID_CLASS=info
 problem.PERSISTENCE_UNIT_INVALID_MAPPING_FILE=error
 problem.PERSISTENCE_UNIT_JAR_FILE_DEPLOYMENT_PATH_WARNING=warning
 problem.PERSISTENCE_UNIT_LISTED_CLASS_IS_AN_ENUM=error
@@ -257,5 +256,3 @@ problem.VIRTUAL_SECONDARY_TABLE_PRIMARY_KEY_JOIN_COLUMN_UNRESOLVED_NAME=error
 problem.VIRTUAL_SECONDARY_TABLE_PRIMARY_KEY_JOIN_COLUMN_UNRESOLVED_REFERENCED_COLUMN_NAME=error
 problem.XML_VERSION_NOT_LATEST=info
 workspace_validation_preferences_overridden=true
-=======
->>>>>>> branch 'master' of https://github.com/amoren86/M07UF3.git

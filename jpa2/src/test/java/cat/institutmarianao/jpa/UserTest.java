@@ -16,25 +16,25 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 
-class UserTest {
+public class UserTest {
 	private EntityManager entityManager;
 	private EntityTransaction entityTransaction;
 
 	@Before
-	void setUp() {
+	public void setUp() {
 		entityManager = Persistence.createEntityManagerFactory("InMemoryH2PersistenceUnit").createEntityManager();
 		entityTransaction = entityManager.getTransaction();
 	}
 
 	@After
-	void cleanUp() {
+	public void cleanUp() {
 		if (entityManager != null && entityManager.isOpen()) {
 			entityManager.close();
 		}
 	}
 
 	@Test
-	void findAllUsers() {
+	public void findAllUsers() {
 		User user = new User();
 		user.setUsername("lovelace");
 		user.setName("Ada Lovelace");

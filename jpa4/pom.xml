@@ -16,16 +16,19 @@
 
 		<!-- Dependency versions -->
 		<jakartaee-api.version>10.0.0</jakartaee-api.version>
-		<hibernate.version>6.6.8.Final</hibernate.version>
+		<jakarta.servlet.jsp.jstl.version>3.0.0</jakarta.servlet.jsp.jstl.version>
+		<eclipselink.version>4.0.3</eclipselink.version>
 		<mysql.connector.version>8.3.0</mysql.connector.version>
-		<h2-database>2.3.232</h2-database>
+		
+		<!-- Tests-->
+		<h2-database>1.4.200</h2-database>
 		<junit.version>4.13.2</junit.version>
 
 		<arquillian-junit-container>1.7.2.Final</arquillian-junit-container>
 		<payara-embedded-all>6.2025.1</payara-embedded-all>
 		<arquillian-payara-server-embedded>3.1</arquillian-payara-server-embedded>
 		
-		<!-- Plugin versions -->
+		<!-- Build -->
 		<compiler.plugin.version>3.11.0</compiler.plugin.version>
 		<war.plugin.version>3.3.2</war.plugin.version>
 		<maven-surefire.version>3.0.0-M5</maven-surefire.version>
@@ -39,17 +42,18 @@
 			<version>${jakartaee-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- Jakarta JSTL -->
+		<dependency>
+			<groupId>jakarta.servlet.jsp.jstl</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+			<version>${jakarta.servlet.jsp.jstl.version}</version>
+		</dependency>
+
 		<!-- JPA Implementation -->
 		<dependency>
-			<groupId>org.hibernate.orm</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse</groupId>
-			<artifactId>yasson</artifactId>
-			<version>3.0.3</version>
-			<scope>test</scope>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>${eclipselink.version}</version>
 		</dependency>
 		<!-- MySQL Driver -->
 		<dependency>
@@ -57,13 +61,7 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<version>${mysql.connector.version}</version>
 		</dependency>
-		<!-- H2 Database -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>${h2-database}</version>
-			<scope>test</scope>
-		</dependency>
+
 		<!-- JUnit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -71,8 +69,16 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
-		<!-- Dependencia de Arquillian Core -->
+
+		<!-- H2 -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2-database}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Arquillian Core -->
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
 			<artifactId>arquillian-junit-container</artifactId>
@@ -91,6 +97,7 @@
 			<groupId>fish.payara.arquillian</groupId>
 			<artifactId>arquillian-payara-server-embedded</artifactId>
 			<version>${arquillian-payara-server-embedded}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -115,6 +122,9 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven-surefire.version}</version>
 					<configuration>
+						<systemPropertyVariables>
+							<arquillian.launch>payara</arquillian.launch>
+						</systemPropertyVariables>
 						<argLine>--add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/jdk.internal.loader=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.management/sun.management=ALL-UNNAMED --add-opens=java.base/sun.net.www.protocol.jrt=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.desktop/java.beans=ALL-UNNAMED --add-opens=java.base/sun.net.www.protocol.jar=ALL-UNNAMED --add-exports=java.base/jdk.internal.ref=ALL-UNNAMED --add-exports=java.base/sun.net.www=ALL-UNNAMED --add-exports=java.base/sun.security.util=ALL-UNNAMED --add-opens=java.naming/javax.naming.spi=ALL-UNNAMED --add-exports=java.naming/javax.naming.spi=ALL-UNNAMED --add-opens=java.base/sun.net.www.protocol.jar=ALL-UNNAMED</argLine>
 					</configuration>
 				</plugin>
