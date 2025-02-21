@@ -36,18 +36,6 @@ public class UserServiceTest {
 				.addAsManifestResource(EmptyAsset.INSTANCE, ArchivePaths.create("beans.xml"));
 	}
 
-	private User createTestUser(String username, String name, String email) {
-		User user = new User();
-		user.setUsername(username);
-		user.setName(name);
-		user.setEmail(email);
-		user.setActive(true);
-		user.setCreatedOn(new Timestamp(new Date().getTime()));
-		user.setPassword("password");
-		user.setRank(100);
-		return user;
-	}
-
 	@Test
 	public void testCreateUser() {
 		User user = createTestUser("lovelace", "Ada Lovelace", "ada@lovelace.was");
@@ -80,10 +68,24 @@ public class UserServiceTest {
 	@Test
 	public void testRemoveUser() {
 		User user = createTestUser("byron", "Lord Byron", "lord@byron.was");
+		assertNull(user.getId());
+
 		userService.create(user);
+		assertNotNull(user.getId());
 
 		userService.remove(user);
-
 		assertThrows(EJBException.class, () -> userService.findUserByUsername("byron"));
+	}
+
+	private User createTestUser(String username, String name, String email) {
+		User user = new User();
+		user.setUsername(username);
+		user.setName(name);
+		user.setEmail(email);
+		user.setActive(true);
+		user.setCreatedOn(new Timestamp(new Date().getTime()));
+		user.setPassword("password");
+		user.setRank(100);
+		return user;
 	}
 }

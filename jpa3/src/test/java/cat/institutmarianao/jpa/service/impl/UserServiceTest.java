@@ -1,7 +1,9 @@
 package cat.institutmarianao.jpa.service.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThrows;
 
 import java.sql.Timestamp;
@@ -35,37 +37,31 @@ public class UserServiceTest {
 		entityManager.close();
 	}
 
-	private User createTestUser(String username, String name, String email) {
-		User user = new User();
-		user.setUsername(username);
-		user.setName(name);
-		user.setEmail(email);
-		user.setActive(true);
-		user.setCreatedOn(new Timestamp(new Date().getTime()));
-		user.setPassword("password");
-		user.setRank(100);
-		return user;
-	}
-
 	@Test
 	public void testCreateUser() {
 		User user = createTestUser("lovelace", "Ada Lovelace", "ada@lovelace.was");
+		assertNull(user.getId());
+
 		entityTransaction.begin();
 		userService.create(user);
 		entityTransaction.commit();
+		assertNotNull(user.getId());
 
 		User foundUser = userService.findUserByUsername("lovelace");
 		assertNotNull(foundUser);
-		assertEquals("lovelace", foundUser.getUsername());
-		assertEquals("ada@lovelace.was", foundUser.getEmail());
+		assertEquals(user, foundUser);
 	}
 
 	@Test
 	public void testEditUser() {
 		User user = createTestUser("babbage", "Charles Babbage", "charles@babbage.was");
+		assertNull(user.getId());
+
 		entityTransaction.begin();
 		userService.create(user);
 		entityTransaction.commit();
+		assertNotNull(user.getId());
+		assertNotEquals("new.charles@babbage.was", user.getEmail());
 
 		entityTransaction.begin();
 		user.setEmail("new.charles@babbage.was");
@@ -79,9 +75,12 @@ public class UserServiceTest {
 	@Test
 	public void testRemoveUser() {
 		User user = createTestUser("byron", "Lord Byron", "lord@byron.was");
+		assertNull(user.getId());
+
 		entityTransaction.begin();
 		userService.create(user);
 		entityTransaction.commit();
+		assertNotNull(user.getId());
 
 		entityTransaction.begin();
 		userService.remove(user);
@@ -89,4 +88,17 @@ public class UserServiceTest {
 
 		assertThrows(NoResultException.class, () -> userService.findUserByUsername("byron"));
 	}
+
+	private User createTestUser(String username, String name, String email) {
+		User user = new User();
+		user.setUsername(username);
+		user.setName(name);
+		user.setEmail(email);
+		user.setActive(true);
+		user.setCreatedOn(new Timestamp(new Date().getTime()));
+		user.setPassword("password");
+		user.setRank(100);
+		return user;
+	}
+
 }
