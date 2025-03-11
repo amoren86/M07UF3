@@ -8,9 +8,6 @@ import cat.institutmarianao.spring.repository.UserRepository;
 
 /**
  * Repository beans, using Mockito mocks
- *
- * @author Toni
- *
  */
 @Configuration
 public class MockRepositoryConfig {
